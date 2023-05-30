@@ -1,0 +1,13 @@
+const express = require('express')
+const router = require('./router')
+const userrouter = require('./router/user')
+const cors = require('cors')
+const app = express()
+app.use(cors())
+app.use(router)
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(userrouter)
+app.listen(80, () => {
+  console.log('服务器启动在80端口...')
+})
