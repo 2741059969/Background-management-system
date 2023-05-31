@@ -10,7 +10,7 @@
 // import Father from '@/components/componentstx/v_models/WFather.vue'
 // import Father from '@/components/componentstx/provide-inject/YeYe.vue'
 // import Father from '@/components/componentstx/slot_chacao/WTwo.vue'
-// import WTest from '@/components/test/WTest.vue'
+import WTest from '@/components/test/WTest.vue'
 // import WIcon from './components/WIcon.vue'
 import { ref } from 'vue'
 

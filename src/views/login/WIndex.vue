@@ -64,6 +64,9 @@ const onSubmit = async () => {
   })
 
   if (result.code === 200) {
+    //登录成功保存token到本地
+    let token = result.token
+    localStorage.setItem('TOKEN', token)
     router.push('/home')
     ElMessage({
       type: 'success',

@@ -13,6 +13,14 @@ export default defineConfig({
       symbolId: 'icon-[name]'
     })
   ],
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        additionalData: '@import "./src/styles/variable.less";'
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
