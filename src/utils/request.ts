@@ -1,7 +1,7 @@
 //二次封装axios
 import axios from 'axios'
 const request = axios.create({
-  baseURL: 'http://localhost'
+  baseURL: 'http://sph-api.atguigu.cn'
 })
 request.interceptors.request.use((config) => {
   return config

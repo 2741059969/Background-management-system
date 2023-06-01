@@ -25,14 +25,19 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import request from '@/utils/request'
+import { gettime } from '@/utils/time'
 import { User, Lock } from '@element-plus/icons-vue'
-import { ElMessage } from 'element-plus'
-import type { login_response } from '@/type/userabout'
+import { ElNotification, ElMessage } from 'element-plus'
+import { reqLogin } from '@/api/user/index'
 // import { ElMessage } from 'element-plus'
 // do not use same name with ref
 const form = reactive({
   username: '',
   password: ''
+})
+const adminform = reactive({
+  username: 'admin',
+  password: 'atguigu123'
 })
 //表单规则验证
 let validateusername = (rules, value: string, callback) => {
@@ -58,24 +63,24 @@ const router = useRouter()
 const onSubmit = async () => {
   console.log('点击了登录按钮')
 
-  let result: login_response = await request.post('http://localhost/login', {
-    username: form.username,
-    password: form.password
-  })
+  let result = await reqLogin(adminform)
+  console.log(result)
 
   if (result.code === 200) {
     //登录成功保存token到本地
-    let token = result.token
+    let token = result.data
     localStorage.setItem('TOKEN', token)
     router.push('/home')
-    ElMessage({
+    ElNotification({
+      duration: 500,
       type: 'success',
-      message: '登录成功'
+      message: '欢迎回来',
+      title: `Hi,${gettime()}好`
     })
   } else {
     ElMessage({
       type: 'error',
-      message: '登录失败'
+      message: '账号或密码错误'
     })
   }
 }

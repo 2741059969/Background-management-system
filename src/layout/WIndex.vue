@@ -7,7 +7,7 @@
 
       <el-scrollbar class="scrollbar">
         <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-          <Menu></Menu>
+          <MenuW :routesinlayout="routesinlayout"></MenuW>
         </el-menu>
       </el-scrollbar>
       <!-- <Menu></Menu> -->
@@ -24,8 +24,9 @@
 <script setup lang="ts">
 import Logo from './logo/WIndex.vue'
 import Main from './main/WIndex.vue'
-import Menu from './menu/WIndex.vue'
+import MenuW from './menu/WIndex.vue'
 import Tabbar from './tabbar/WIndex.vue'
+import { routesinlayout } from '@/router/routes'
 </script>
 
 <style scoped lang="less">
@@ -71,6 +72,7 @@ import Tabbar from './tabbar/WIndex.vue'
     top: @base-tabbar-height;
     padding: 20px;
     background-color: pink;
+    overflow: auto;
   }
 }
 </style>
